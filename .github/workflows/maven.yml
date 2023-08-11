@@ -27,12 +27,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    
-    - name: Run tests
-      run: |
-        # Instala Chrome en el entorno
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+    - name: Code analysis with Sonarqube 
+      run: mvn sonar:sonar -Dsonar.projectKey=proyecto-base1.1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_88d59bdcc7f18c6acf5d5b26eeb1f29e26de1f55
