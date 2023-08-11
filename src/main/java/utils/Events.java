@@ -1,5 +1,6 @@
 package main.java.utils;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -27,7 +28,7 @@ public class Events extends BaseTest {
 			wait.until(ExpectedConditions.visibilityOf(element));
 			return element;
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getStackTrace().toString());
+			Utils.eventFailed(currentEvent, Arrays.toString(e.getStackTrace()));
 			return null;
 		}
 	}
