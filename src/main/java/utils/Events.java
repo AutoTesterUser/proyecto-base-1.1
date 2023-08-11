@@ -24,11 +24,11 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 			return element;
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, Arrays.toString(e.getStackTrace()));
+			Utils.eventFailed(Arrays.toString(e.getStackTrace()));
 			return null;
 		}
 	}
@@ -41,12 +41,12 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			List<WebElement> elements = elementFetch.getListWebElements("XPATH", xpathElement);
+			List<WebElement> elements = elementFetch.getListWebElements(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 			return elements;
 
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getStackTrace().toString());
+			Utils.eventFailed(e.getStackTrace().toString());
 			return null;
 		}
 	}
@@ -59,7 +59,7 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			if (element.isDisplayed() && element.isEnabled()) {
@@ -71,14 +71,13 @@ public class Events extends BaseTest {
 				element.sendKeys(text);
 				Utils.outputInfo("Se ha ingresado el texto '" + text + "' en el campo: " + nameInput);
 				Validation.trueBooleanCondition(element.getAttribute("value").contains(text),
-						"El texto se ha ingresado correctamente", "El texto no se ha ingresado correctamente",
-						currentEvent);
+						"El texto se ha ingresado correctamente", "El texto no se ha ingresado correctamente");
 			} else {
 				String nameInput = Utils.elementName("cambiar");
-				Utils.eventFailed(currentEvent, "El campo '" + nameInput + "' no se encuentra habilitado o desplegado");
+				Utils.eventFailed("El campo '" + nameInput + "' no se encuentra habilitado o desplegado");
 			}
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 
@@ -89,7 +88,7 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			if (element.isEnabled()) {
@@ -98,10 +97,10 @@ public class Events extends BaseTest {
 				Utils.outputInfo("Se ha hecho clic en el botón: " + name);
 			} else {
 				String name = element.getAttribute("text");
-				Utils.eventFailed(currentEvent, "El botón '" + name + "' no está desplegado o habilitado");
+				Utils.eventFailed("El botón '" + name + "' no está desplegado o habilitado");
 			}
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 
@@ -112,12 +111,11 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
-			String text = element.getText();
-			return text;
+			return  element.getText();
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 			return null;
 		}
 	}
@@ -129,7 +127,7 @@ public class Events extends BaseTest {
 			String text = elementList.get(i).getText();
 			return text;
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 			return null;
 		}
 	}
@@ -141,7 +139,7 @@ public class Events extends BaseTest {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			String name = Utils.variableName(xpathElement);
@@ -153,11 +151,11 @@ public class Events extends BaseTest {
 						"Se ha seleccionado la opción '" + selectedOption + "' en la lista desplegable '" + name + "'");
 				return selectedOption;
 			} else {
-				Utils.eventFailed(currentEvent, "La opción requerida no pudo ser seleccionada");
+				Utils.eventFailed("La opción requerida no pudo ser seleccionada");
 				return null;
 			}
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 			return null;
 		}
 	}
@@ -168,13 +166,13 @@ public class Events extends BaseTest {
 		try {
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement("XPATH", xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			String name = Utils.variableName(xpathElement);
 			jse.executeScript("arguments[0].click()", element);
 			Utils.outputInfo("Se hizo clic en el botón: " + name);
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 

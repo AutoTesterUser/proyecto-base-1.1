@@ -2,19 +2,19 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-11T16:15:04 CLT" name="Sample Test Suite" finished-at="2023-08-11T16:15:37 CLT" duration-ms="33527">
+  <suite started-at="2023-08-11T18:12:57 CLT" name="Sample Test Suite" finished-at="2023-08-11T18:13:06 CLT" duration-ms="9387">
     <groups>
       <group name="Regresion">
         <method signature="Tests.comprarDesdeMenuCategorias([Ljava.lang.String;)[pri:1, instance:test.java.webshop.Tests@5a5a729f]" name="comprarDesdeMenuCategorias" class="test.java.webshop.Tests"/>
       </group> <!-- Regresion -->
     </groups>
-    <test started-at="2023-08-11T16:15:04 CLT" name="Demo Web Shop" finished-at="2023-08-11T16:15:37 CLT" duration-ms="33527">
+    <test started-at="2023-08-11T18:12:57 CLT" name="Demo Web Shop" finished-at="2023-08-11T18:13:06 CLT" duration-ms="9387">
       <class name="test.java.webshop.Tests">
-        <test-method is-config="true" signature="beforeTestMethod()[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T16:15:04 CLT" name="beforeTestMethod" finished-at="2023-08-11T16:15:04 CLT" duration-ms="208" status="PASS">
+        <test-method is-config="true" signature="beforeTestMethod()[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T18:12:57 CLT" name="beforeTestMethod" finished-at="2023-08-11T18:12:57 CLT" duration-ms="98" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTestMethod -->
-        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.reflect.Method)[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T16:15:04 CLT" name="beforeMethod" finished-at="2023-08-11T16:15:31 CLT" duration-ms="27506" status="PASS">
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.reflect.Method)[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T18:12:57 CLT" name="beforeMethod" finished-at="2023-08-11T18:13:02 CLT" duration-ms="5519" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -30,7 +30,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="comprarDesdeMenuCategorias([Ljava.lang.String;)[pri:1, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T16:15:31 CLT" name="comprarDesdeMenuCategorias" data-provider="webshopdata" finished-at="2023-08-11T16:15:36 CLT" duration-ms="4255" status="PASS">
+        <test-method signature="comprarDesdeMenuCategorias([Ljava.lang.String;)[pri:1, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T18:13:02 CLT" name="comprarDesdeMenuCategorias" data-provider="webshopdata" finished-at="2023-08-11T18:13:05 CLT" duration-ms="2243" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -41,7 +41,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- comprarDesdeMenuCategorias -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T16:15:36 CLT" name="afterMethod" finished-at="2023-08-11T16:15:37 CLT" duration-ms="1118" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T18:13:05 CLT" name="afterMethod" finished-at="2023-08-11T18:13:06 CLT" duration-ms="1252" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -52,7 +52,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T16:15:37 CLT" name="afterTestMethod" finished-at="2023-08-11T16:15:37 CLT" duration-ms="299" status="PASS">
+        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:test.java.webshop.Tests@5a5a729f]" started-at="2023-08-11T18:13:06 CLT" name="afterTestMethod" finished-at="2023-08-11T18:13:06 CLT" duration-ms="172" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTestMethod -->
