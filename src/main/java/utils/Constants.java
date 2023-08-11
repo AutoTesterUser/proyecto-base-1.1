@@ -2,6 +2,6 @@ package main.java.utils;
 
 public class Constants {
 	
-	public static String url = "https://demowebshop.tricentis.com/";
+	public static final String URL = "https://demowebshop.tricentis.com/";
 }
 

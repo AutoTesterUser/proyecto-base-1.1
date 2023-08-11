@@ -15,9 +15,8 @@ public class HomePageEvents implements HomePageElements {
 
 	@BeforeMethod(description = "Selecciona una categoría desde el menú")
 	public static void selectCategory(String categoryName) {
-
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
-		Utils.outputInfo("Ha comenzado el evento: " + currentEvent);
+		
+		Utils.eventStart();
 
 		try {
 			List<WebElement> categories = Events.findElements(listCategories);
@@ -32,24 +31,22 @@ public class HomePageEvents implements HomePageElements {
 					Validation.trueBooleanCondition(title.contains(categoryName),
 							"Se ha seleccionado la categoría de productos correctamente",
 							"No se ha seleccionado la categoría correcta, se esperaba: " + categoryName
-									+ ", y se encontró: " + title,
-							currentEvent);
+									+ ", y se encontró: " + title);
 					break;
 				}
 				else if (i == categories.size()){
-					Utils.eventFailed(currentEvent, "No se ha encontrado la categoría: " + name);
+					Utils.eventFailed("No se ha encontrado la categoría: " + name);
 				}
 			}
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 
 	@BeforeMethod(description = "Selecciona una producto desde el catálogo para ver el detalle")
 	public static void selectProductDetails(String productName) {
 
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
-		Utils.outputInfo("Ha comenzado el evento: " + currentEvent);
+		Utils.eventStart();
 
 		try {
 			Events.findElement(aProductDetails.replace("[product-name]", productName));
@@ -60,25 +57,23 @@ public class HomePageEvents implements HomePageElements {
 			Validation.trueBooleanCondition(title.contains(productName),
 					"Se ha seleccionado el producto correctamente",
 					"No se ha seleccionado el producto correcto, se esperaba: " + productName
-							+ ", y se encontró: " + title,
-					currentEvent);
+							+ ", y se encontró: " + title);
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 	
 	@BeforeMethod(description = "Ingresa la información del remitente de la Gift Card")
 	public static void enterRecipientInfo(String recipientName, String senderName, String message) {
 
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
-		Utils.outputInfo("Ha comenzado el evento: " + currentEvent);
+		Utils.eventStart();
 
 		try {
 			Events.sendKeys(inputRecipientName, recipientName);
 			Events.sendKeys(inputSenderName, senderName);
 			Events.sendKeys(inputMessage, message);
 		} catch (Exception e) {
-			Utils.eventFailed(currentEvent, e.getMessage());
+			Utils.eventFailed(e.getMessage());
 		}
 	}
 

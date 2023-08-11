@@ -46,16 +46,16 @@ public class Utils {
 	}
 
 	@BeforeMethod(description = "Se ejecuta si algún método cae en el catch")
-	public static void eventFailed(String currentEvent, String errorMessage) {
-		BaseTest.logger.warning("No se pudo terminar el evento '" + currentEvent + "' a causa de: " + errorMessage);
-		System.out.println("No se pudo terminar el evento '" + currentEvent + "' a causa de: " + errorMessage);
+	public static void eventFailed(String errorMessage) {
+		BaseTest.logger.warning("No se pudo terminar el evento '" + getCurrentMethod() + "' a causa de: " + errorMessage);
+		System.out.println("No se pudo terminar el evento '" + getCurrentMethod() + "' a causa de: " + errorMessage);
 
-		String logText = "FAILED: " + currentEvent;
+		String logText = "FAILED: " + getCurrentMethod();
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.RED);
 		BaseTest.logger.log(Status.FAIL, m);
-		String path = takeScreenshot(currentEvent);
+		String path = takeScreenshot(getCurrentMethod());
 		try {
-			BaseTest.logger.addScreenCaptureFromPath(path, currentEvent);
+			BaseTest.logger.addScreenCaptureFromPath(path, getCurrentMethod());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -84,15 +84,15 @@ public class Utils {
 		System.out.println(output);
 	}
 
-	public static void testCasePassed(String currentTestCase, String message) {
-		outputInfo("PASSED: " + currentTestCase + "\n" + message + "\n");
+	public static void testCasePassed(String message) {
+		outputInfo("PASSED: " + getCurrentMethod() + "\n" + message + "\n");
 	}
 
-	public static void testCaseFailed(String currentTestCase, String caseTestDesc, Exception e) {
-		outputInfo("No se ha terminado el caso de prueba '" + currentTestCase + "' por la siguiente excepción: " + "\n"
+	public static void testCaseFailed(String caseTestDesc, Exception e) {
+		outputInfo("No se ha terminado el caso de prueba '" + getCurrentMethod() + "' por la siguiente excepción: " + "\n"
 				+ e.getMessage());
-		outputInfo("FAILED: " + currentTestCase + " - " + caseTestDesc + "\n");
-		takeScreenshot(currentTestCase);
+		outputInfo("FAILED: " + getCurrentMethod() + " - " + caseTestDesc + "\n");
+		takeScreenshot(getCurrentMethod());
 		Assert.fail();
 	}
 
@@ -146,5 +146,26 @@ public class Utils {
 			return null;
 		}
 		return "";
+	}
+	
+	@BeforeMethod(description = "Obtiene el nombre del método en curso")
+	public static String getCurrentMethod() {
+		try {
+			StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+			return stackTrace[3].getMethodName();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@BeforeMethod(description = "Envía el nombre del método en curso por la consola y en el reporte de pruebas")
+	public static void eventStart() {
+		try {
+			BaseTest.logger.info("Ha comenzado el evento: " + getCurrentMethod());
+			System.out.println("Ha comenzado el evento: " + getCurrentMethod());
+		} catch (Exception e) {
+			BaseTest.logger.info(e.getMessage());
+			System.out.println(e.getMessage());
+		}
 	}
 }
