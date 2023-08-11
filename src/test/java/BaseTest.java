@@ -95,7 +95,7 @@ public class BaseTest {
 			WebDriverManager.chromedriver().setup();
 
 			ChromeOptions options = new ChromeOptions();
-			options.setHeadless(false);
+			options.setHeadless(true);
 			driver = new ChromeDriver(options);
 		} else if (browserName.contains("edge")) {
 			WebDriverManager.edgedriver().setup();

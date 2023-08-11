@@ -46,3 +46,13 @@
 2023-08-11 00:17:06.887 [%PARSER_ERROR[Thread]] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
 2023-08-11 00:17:34.764 [%PARSER_ERROR[Thread]] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
 2023-08-11 00:17:34.778 [%PARSER_ERROR[Thread]] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2023-08-11 09:54:16,010 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
+2023-08-11 09:54:16,030 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2023-08-11 09:55:11,320 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
+2023-08-11 09:55:11,337 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2023-08-11 09:56:01,626 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
+2023-08-11 09:56:01,644 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2023-08-11 09:56:42,616 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
+2023-08-11 09:56:42,637 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
+2023-08-11 09:59:06,625 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 114.0.5735.90 (resolved driver for Chrome 114)
+2023-08-11 09:59:06,644 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Francisca Valenzuela\.cache\selenium\chromedriver\win32\114.0.5735.90\chromedriver.exe
