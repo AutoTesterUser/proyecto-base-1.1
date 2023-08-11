@@ -18,13 +18,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Busca y encuentra un elemento visible según su XPATH")
 	public static WebElement findElement(String xpathElement) {
-
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 			return element;
 		} catch (Exception e) {
@@ -35,13 +33,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Busca y encuentra una lista de elementos visibles según su XPATH")
 	public static List<WebElement> findElements(String xpathElement) {
-
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			List<WebElement> elements = elementFetch.getListWebElements(ElementFetch.xpath, xpathElement);
+			List<WebElement> elements = elementFetch.getListWebElements(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 			return elements;
 
@@ -53,13 +49,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Escribe dentro de un campo de texto")
 	public static void sendKeys(String xpathElement, String text) {
-
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			if (element.isDisplayed() && element.isEnabled()) {
@@ -83,12 +77,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Selecciona un botón")
 	public static void clickButton(String xpathElement) {
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			if (element.isEnabled()) {
@@ -106,12 +99,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Obtiene el texto de un elemento por su XPATH")
 	public static String getText(String xpathElement) {
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 			return  element.getText();
 		} catch (Exception e) {
@@ -122,7 +114,6 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Obtiene el texto de un elemento dentro de una lista de elementos")
 	public static String getText(List<WebElement> elementList, int i) {
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			String text = elementList.get(i).getText();
 			return text;
@@ -134,12 +125,11 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Selecciona una opción por el texto visible de una lista desplegable")
 	public static String selectByText(String xpathElement, String option) {
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 			String name = Utils.variableName(xpathElement);
@@ -162,11 +152,10 @@ public class Events extends BaseTest {
 
 	@BeforeMethod(description = "Selecciona un elemento que se encuentra detrás de otro")
 	public static void clickJavaScript(String xpathElement, WebDriver driver) {
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		try {
 			ElementFetch elementFetch = new ElementFetch();
 
-			WebElement element = elementFetch.getWebElement(ElementFetch.xpath, xpathElement);
+			WebElement element = elementFetch.getWebElement(ElementFetch.XPATH, xpathElement);
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			String name = Utils.variableName(xpathElement);
 			jse.executeScript("arguments[0].click()", element);
