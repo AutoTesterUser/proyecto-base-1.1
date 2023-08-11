@@ -32,4 +32,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Code analysis with Sonarqube 
-      run: mvn sonar:sonar -Dsonar.projectKey=proyecto-base1.1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_88d59bdcc7f18c6acf5d5b26eeb1f29e26de1f55
+      run: mvn sonar:sonar -Dsonar.projectKey=proyecto-base1.1 -Dsonar.host.url=http://192.168.100.127:9000 -Dsonar.login=sqp_88d59bdcc7f18c6acf5d5b26eeb1f29e26de1f55
