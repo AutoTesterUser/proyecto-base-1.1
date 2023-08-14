@@ -8,7 +8,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import jdk.jfr.internal.Logger;
 import test.java.BaseTest;
 
 import java.io.File;
