@@ -32,4 +32,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Curl Sonarqube Host
-      run: ping 192.168.100.127
+      run: telnet 192.168.100.127 9000
