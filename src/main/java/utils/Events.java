@@ -42,7 +42,7 @@ public class Events extends BaseTest {
 			return elements;
 
 		} catch (Exception e) {
-			Utils.eventFailed(e.getStackTrace().toString());
+			Utils.eventFailed(Arrays.toString(e.getStackTrace()));
 			return null;
 		}
 	}
@@ -115,8 +115,7 @@ public class Events extends BaseTest {
 	@BeforeMethod(description = "Obtiene el texto de un elemento dentro de una lista de elementos")
 	public static String getText(List<WebElement> elementList, int i) {
 		try {
-			String text = elementList.get(i).getText();
-			return text;
+			return elementList.get(i).getText();
 		} catch (Exception e) {
 			Utils.eventFailed(e.getMessage());
 			return null;

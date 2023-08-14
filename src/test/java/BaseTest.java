@@ -61,7 +61,7 @@ public class BaseTest {
 		logger = extent.createTest(testMethod.getName());
 		setUpDriver(browserName);
 		driver.manage().window().maximize();
-		driver.get(Constants.URL);
+		driver.get(Constants.url);
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}

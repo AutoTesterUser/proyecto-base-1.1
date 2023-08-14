@@ -8,7 +8,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<sonar.host.url>http://192.168.100.127:9000</sonar.host.url>
 		<sonar.exclusions>**/test/java/*,**/test/java/*/*</sonar.exclusions>
 	</properties>
 	<build>

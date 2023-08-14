@@ -9,7 +9,7 @@
     <classes>
       <class name="test.java.webshop.Tests">
         <methods>
-          <include name="comprarDesdeMenuCategorias" invocation-numbers="0"/>
+          <include name="comprarDesdeMenuCategorias"/>
           <include name="afterTestMethod"/>
           <include name="beforeMethod"/>
           <include name="beforeTestMethod"/>
