@@ -32,33 +32,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Obtener Ruta Relativa
-      id: relative_path
-      run: |
-        current_dir="$PWD"
-        home_dir="$HOME"
-        relative_path="${current_dir#$home_dir}"
-        echo "::set-output name=rel_path::$relative_path"
-
-    - name: Obtener Último Archivo en Carpeta "report"
-      id: last_report_file
-      run: |
-        latest_file=$(ls -t ${{ steps.relative_path.outputs.rel_path }}/report | head -n 1)
-        echo "::set-output name=latest_report_file::$latest_file"
-
-    - name: Agregar Último Archivo a Ruta
-      run: |
-        full_path="${{ steps.relative_path.outputs.rel_path }}/report/${{ steps.last_report_file.outputs.latest_report_file }}"
-        echo "::set-output name=full_path::$full_path"
-
-    - name: Crear Enlace Completo
-      id: full_url
-      run: |
-        github_server="https://github.com"
-        repo_path="${{ github.repository }}"
-        ref="${{ github.ref }}"
-        link="${github_server}/${repo_path}/blob/${ref}${{ steps.full_path.outputs.full_path }}"
-        echo "::set-output name=full_link::$link"
-
-    - name: Mostrar Enlace Completo
-      run: |
-        echo "El enlace completo es: ${{ steps.full_link.outputs.full_link }}"
+      run: latest_file=$(ls -t /work/proyecto-base-1.1/proyecto-base-1.1/report/ | head -n 1)
