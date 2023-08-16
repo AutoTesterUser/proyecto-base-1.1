@@ -32,4 +32,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Obtener Ruta Relativa
-      run: latest_file=$(ls -t /work/proyecto-base-1.1/proyecto-base-1.1/report/ | head -n 1)
+      run: latest_file=$(ls -t /report/ | head -n 1)
+
+    - name: Obtener directorio actual
+      run: pwd
