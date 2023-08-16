@@ -50,6 +50,6 @@ jobs:
         subject: Resultado del Flujo de Trabajo
         body: El flujo de trabajo se ejecutó correctamente.
         contentType: text/plain
-        attachments: $current_directory/report/$latest_report
+        attachments: file://$current_directory/report/$latest_report
         
 
