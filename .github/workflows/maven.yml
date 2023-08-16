@@ -31,11 +31,9 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Obtener Ruta Relativa
-      run: latest_file=$(ls -t /report/ | head -n 1)
+    - name: Obtener Ruta Report
+      run: |
+        current_directory= $(pwd)/report/
+        latest_report=$(ls -t $current_directory) | head -n 1)
+        echo "$current_directory#$latest_report"
 
-    - name: Obtener directorio actual
-      run: pwd
-      
-    - name: Obtener directorio actual
-      run: ls
