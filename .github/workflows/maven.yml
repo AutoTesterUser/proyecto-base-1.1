@@ -39,6 +39,17 @@ jobs:
         relative_path="${current_dir#$home_dir}"
         echo "::set-output name=rel_path::$relative_path"
 
-    - name: Mostrar Ruta Relativa
+    - name: Obtener Último Archivo en Carpeta "report"
+      id: last_report_file
       run: |
-        echo "La ruta relativa es: ${{ steps.relative_path.outputs.rel_path }}"
+        latest_file=$(ls -t ${{ steps.relative_path.outputs.rel_path }}/report | head -n 1)
+        echo "::set-output name=latest_report_file::$latest_file"
+
+    - name: Agregar Último Archivo a Ruta
+      run: |
+        full_path="${{ steps.relative_path.outputs.rel_path }}/report/${{ steps.last_report_file.outputs.latest_report_file }}"
+        echo "::set-output name=full_path::$full_path"
+
+    - name: Mostrar Ruta con Último Archivo
+      run: |
+        echo "La ruta con el último archivo es: ${{ steps.full_path.outputs.full_path }}"
