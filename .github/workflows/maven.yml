@@ -50,6 +50,15 @@ jobs:
         full_path="${{ steps.relative_path.outputs.rel_path }}/report/${{ steps.last_report_file.outputs.latest_report_file }}"
         echo "::set-output name=full_path::$full_path"
 
-    - name: Mostrar Ruta con Último Archivo
+    - name: Crear Enlace Completo
+      id: full_url
       run: |
-        echo "La ruta con el último archivo es: ${{ steps.full_path.outputs.full_path }}"
+        github_server="https://github.com"
+        repo_path="${{ github.repository }}"
+        ref="${{ github.ref }}"
+        link="${github_server}/${repo_path}/blob/${ref}${{ steps.full_path.outputs.full_path }}"
+        echo "::set-output name=full_link::$link"
+
+    - name: Mostrar Enlace Completo
+      run: |
+        echo "El enlace completo es: ${{ steps.full_link.outputs.full_link }}"
