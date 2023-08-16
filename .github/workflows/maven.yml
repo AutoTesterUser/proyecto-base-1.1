@@ -37,16 +37,21 @@ jobs:
         latest_report=$(ls -t $current_directory/report | head -n 1)
         report=$($current_directory/report/$latest_report)
 
-    - name: Enviar Correo
-      uses: appleboy/sendmail-action@v2
+    - name: Send mailer
+      uses: devellany/send-mail@v1.0.2
       with:
-        server: smtp.gmail.com
-        port: 587
-        username: auto.tester.user@gmail.com
+        host: smtp.gmail.com
+        port: 465
+        account: auto.tester.user@gmail.com
         password: automatetester1
-        from: auto.tester.user@gmail.com
+        sender: auto.tester.user@gmail.com
+        from: auto.tester.user@gmail.com)
         to: franciscavalenzuelacs@gmail.com
         subject: Resultado del Flujo de Trabajo
         body: El flujo de trabajo se ejecutó correctamente.
+        contentType: text/plain
         attachments: $report
+        
+    - name: Automation Report
+      run: file://$report
 
