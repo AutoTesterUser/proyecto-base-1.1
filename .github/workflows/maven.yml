@@ -31,5 +31,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Curl Sonarqube Host
-      run: telnet 192.168.100.127 9000
+    - name: Send Report
+      env:
+        HOST: ${{ secrets.CURRENT_SERVER }}
+        REPO: ${{ github.GITHUB_REPOSITORY }}
+        RAMA: ${{ github.GITHUB_REF }}
+      run: |
+        URL="${HOST}-${REPO}-${RAMA}"
+        echo "La URL de acceso al reporte de resultados de las pruebas ejecutadas es: $URL" 
