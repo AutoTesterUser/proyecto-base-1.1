@@ -36,7 +36,7 @@ jobs:
         current_directory=$(pwd)
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
-        echo "::set-output name=report::$current_directory/report/$latest_report"
+        echo "REPORT_PATH=$current_directory/report/$latest_report" >> $GITHUB_ENV
 
     - name: Send mailer
       uses: devellany/send-mail@v1.0.2
@@ -51,6 +51,6 @@ jobs:
         subject: Resultado del Flujo de Trabajo
         body: El flujo de trabajo se ejecutó correctamente.
         contentType: text/plain
-        attachments: file://${{ steps.paso_1.outputs.report }}
+        attachments: file://$REPORT_PATH
         
 
