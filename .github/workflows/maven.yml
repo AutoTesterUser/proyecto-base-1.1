@@ -37,9 +37,6 @@ jobs:
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
 
-    - name: Automation Report
-      run: file://$current_directory/report/$latest_report
-
     - name: Send mailer
       uses: devellany/send-mail@v1.0.2
       with:
