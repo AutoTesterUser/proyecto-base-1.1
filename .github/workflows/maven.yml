@@ -33,7 +33,7 @@ jobs:
 
     - name: Obtener Ruta Report
       run: |
-        current_directory= $(pwd)/report/
-        latest_report=$(ls -t $current_directory) | head -n 1)
-        echo "$current_directory#$latest_report"
+        current_directory= $(pwd)
+        latest_report=$(ls -t $current_directory | head -n 1)
+        echo "$current_directory#/report/$latest_report"
 
