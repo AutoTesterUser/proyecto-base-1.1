@@ -35,11 +35,10 @@ jobs:
       run: |
         current_directory=$(pwd)
         latest_report=$(ls -t $current_directory/report | head -n 1)
-        report=$($current_directory/report/$latest_report)
-        echo "$report"
+        echo "$current_directory/report/$latest_report"
 
     - name: Automation Report
-      run: file://$report
+      run: file://$current_directory/report/$latest_report
 
     - name: Send mailer
       uses: devellany/send-mail@v1.0.2
@@ -54,6 +53,6 @@ jobs:
         subject: Resultado del Flujo de Trabajo
         body: El flujo de trabajo se ejecutó correctamente.
         contentType: text/plain
-        attachments: $report
+        attachments: $current_directory/report/$latest_report
         
 
