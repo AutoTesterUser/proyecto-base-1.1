@@ -36,3 +36,6 @@ jobs:
 
     - name: Obtener directorio actual
       run: pwd
+      
+    - name: Obtener directorio actual
+      run: ls
