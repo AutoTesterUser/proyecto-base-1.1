@@ -36,14 +36,15 @@ jobs:
         current_directory=$(pwd)
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
-        chmod +r $current_directory/report/$latest_report
-        report_file=$($current_directory/report/$latest_report)
+      env: 
+        REPORT_FILE: $current_directory/report/$latest_report
         
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v2.0.0
       with:
         name: Automation_Report
-        path: ${report_file}
+        path: $REPORT_FILE
         retention-days: 7
+          while true; do sleep 1; done
 
 
