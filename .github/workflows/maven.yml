@@ -39,13 +39,14 @@ jobs:
         tar -cvf $current_directory/AutomationReport.tar $current_directory/report/$latest_report
         ls
         cat $current_directory/AutomationReport.tar
+        mkdir -p temp
+        mv $current_directory/report/$latest_report temp/
         
-    - name: Upload GitHub Pages artifact
-      uses: actions/upload-pages-artifact@v2.0.0
+    - name: Publicar en GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: Automation_Report
-        path: ~/
-        retention-days: 7
-          while true; do sleep 1; done
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./temp/
+            while true; do sleep 1; done
 
 
