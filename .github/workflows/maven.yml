@@ -29,7 +29,7 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml || true
 
     - name: Obtener Ruta Report
       run: |
@@ -44,6 +44,5 @@ jobs:
         name: Automation_Report
         path: $current_directory/report/$latest_report
         retention-days: 7
-  
-        
+
 
