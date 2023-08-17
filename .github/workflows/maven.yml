@@ -38,6 +38,7 @@ jobs:
         echo "$current_directory/report/$latest_report"
         echo file://$current_directory/report/$latest_report
         report_file=$($current_directory/report/$latest_report)
+        chmod +r $report_file
         
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v2.0.0
