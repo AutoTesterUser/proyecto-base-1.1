@@ -10,6 +10,10 @@ name: Java CI with Maven
 
 on:
   workflow_dispatch:
+    inputs:
+      parametro-1:
+        description: "Motivo ejecución"
+        required: true
   push:
     branches: [ "main" ]
   pull_request:
