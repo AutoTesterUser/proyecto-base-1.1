@@ -36,15 +36,15 @@ jobs:
         current_directory=$(pwd)
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
-        tar -cvf $current_directory/tar/AutomationReport.tar $current_directory/report/$latest_report
+        tar -cvf $current_directory/AutomationReport.tar $current_directory/report/$latest_report
         ls
-        cat $current_directory/tar/AutomationReport.tar
+        cat $current_directory/AutomationReport.tar
         
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v2.0.0
       with:
         name: Automation_Report
-        path: $current_directory/tar/
+        path: $current_directory/
         retention-days: 7
           while true; do sleep 1; done
 
