@@ -36,23 +36,7 @@ jobs:
         current_directory=$(pwd)
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
-        echo "REPORT_PATH=$current_directory/report/$latest_report" >> $GITHUB_ENV
-        
-    - name: Get Report Path
-      run: report_path=$REPORT_PATH
-
-    - name: Send mailer
-      uses: devellany/send-mail@v1.0.2
-      with:
-        host: smtp.gmail.com
-        port: 465
-        account: auto.tester.user@gmail.com
-        password: automatetester1
-        sender: auto.tester.user@gmail.com
-        from: auto.tester.user@gmail.com)
-        to: franciscavalenzuelacs@gmail.com
-        subject: Resultado del Flujo de Trabajo
-        body: El flujo de trabajo se ejecutó correctamente.
-        contentType: text/plain
+        echo file://$current_directory/report/$latest_report
+  
         
 
