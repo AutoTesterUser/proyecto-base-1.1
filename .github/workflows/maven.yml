@@ -37,6 +37,7 @@ jobs:
         latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
         tar -cvf AutomationReport.tar $current_directory/report/$latest_report
+        ls -l AutomationReport.tar
       env: 
         REPORT_FILE: AutomationReport.tar
         
@@ -44,7 +45,7 @@ jobs:
       uses: actions/upload-pages-artifact@v2.0.0
       with:
         name: Automation_Report
-        path: $REPORT_FILE
+        path: AutomationReport.tar
         retention-days: 7
           while true; do sleep 1; done
 
