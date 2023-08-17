@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-pages-artifact@v2.0.0
       with:
         name: Automation_Report
-        path: $current_directory/report/$latest_report
+        path: ./report/$latest_report
         retention-days: 7
 
 
