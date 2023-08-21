@@ -1,4 +1,4 @@
-name: Run Automation Tests 1
+name: Run Automation Tests Prueba
 
 on:
   push:
@@ -14,6 +14,8 @@ jobs:
   build:
     name: Build Project
     runs-on: ubuntu-latest
+    env:
+      REPORT_PATH: ""  # Definimos la variable vacía inicialmente
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -30,9 +32,8 @@ jobs:
       id: get-path
       run: |
         latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        echo "REPORT_PATH=${GITHUB_WORKSPACE}/report/${latest_report}" >> $GITHUB_ENV
         echo $REPORT_PATH
-      env: 
-        REPORT_PATH: ${GITHUB_WORKSPACE}/report/${latest_report}
       
   results: 
     name: Tests Result
@@ -40,10 +41,10 @@ jobs:
     needs: build
     steps:
       - name: Obtener Valor de Variable
-        run: echo ${{ env.REPORT_PATH }}
+        run: echo $REPORT_PATH
         
       - name: Publish HTML
         uses: actions/upload-artifact@v2
         with:
           name: Automation Report
-          path: ${{ env.REPORT_PATH }}
+          path: $REPORT_PATH
