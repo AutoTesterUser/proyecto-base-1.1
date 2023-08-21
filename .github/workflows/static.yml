@@ -30,7 +30,7 @@ jobs:
       run: |
         latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
         echo "path=${GITHUB_WORKSPACE}/report/${latest_report}" >> $GITHUB_OUTPUT
-        echo ${GITHUB_WORKSPACE}/report${latest_report}
+        echo ${GITHUB_WORKSPACE}/report/${latest_report}
       
   results: 
     name: Tests Result
@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: AutomationReport.html
-          path: ${{ needs.build.outputs.path }}"
+          path: $path
