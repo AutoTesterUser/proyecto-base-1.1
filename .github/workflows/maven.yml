@@ -32,8 +32,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    #- name: Build with Maven
-    # run: mvn -B package --file pom.xml || true
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml || true
+      
   results:
     name: Tests Result
     runs-on: ubuntu-latest
