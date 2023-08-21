@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
-        path: ./report
+        path: ./report/AutomationReport_10-08-2023_22.14.01.html
         
    
       
