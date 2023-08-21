@@ -28,8 +28,8 @@ jobs:
 
     - name: Variable Report
       run: |
-        echo latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-        cat./report/$latest_report > AutomationReport.html
+        latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        cat ./report/$latest_report > AutomationReport.html
         cat AutomationReport.html
          
     - name: Publish HTML
