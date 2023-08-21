@@ -39,8 +39,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Publicar Archivo HTML
+    - name: Get Relative Path
+      id: get-relative-path
+      run: |
+        current_directory=$(pwd)
+        latest_report=$(ls -t $current_directory/report | head -n 1)
+        echo "$current_directory/report/$latest_report"
+        echo "::set-output name=path::$($current_directory/report/$latest_report)"
+      
+    - name: Publish HTML
       uses: actions/upload-artifact@v2
       with:
         name: AutomationReport.html
-        path: ./report/AutomationReport_10-08-2023_22.14.01.html
+        path: ${{ steps.get-relative-path.outputs.path }}
