@@ -36,7 +36,7 @@ jobs:
       with:
         name: Automation Report
         run: latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-        path: ./report/$REPORT_PATH
+        path: ./report/AutomationReport_10-08-2023_22.14.01.html
         
   results: 
     name: Tests Result
@@ -44,10 +44,6 @@ jobs:
     needs: build
     steps:
     
-      - name: Publish HTML
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: Automation Report
-      - name: Test artifact
-        run: ls -R
+      - name: Listo
+        run: echo "Listo"
   
