@@ -40,10 +40,10 @@ jobs:
     needs: build
     steps:
       - name: Obtener Valor de Variable
-        run: echo $REPORT_PATH
+        run: echo ${{ env.REPORT_PATH }}
         
       - name: Publish HTML
         uses: actions/upload-artifact@v2
         with:
           name: Automation Report
-          path: '$REPORT_PATH'
+          path: ${{ env.REPORT_PATH }}
