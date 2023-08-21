@@ -43,6 +43,7 @@ jobs:
       id: get-relative-path
       run: |
         current_directory=$(pwd)
+        echo ls -t $current_directory/report | head -n 1
         latest_report=$(ls -t $current_directory/report/ | head -n 1)
         echo "$current_directory/report/$latest_report"
         echo "{path}={$current_directory/report/$latest_report}" >> $GITHUB_OUTPUT
