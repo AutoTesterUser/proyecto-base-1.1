@@ -32,6 +32,7 @@ jobs:
       id: get-path
       run: |
         latest_report=${GITHUB_WORKSPACE}/report
+        echo $latest_report
         echo "REPORT_PATH=${latest_report}" >> $GITHUB_ENV
         echo $REPORT_PATH
       
