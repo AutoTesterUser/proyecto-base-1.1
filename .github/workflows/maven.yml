@@ -1,4 +1,4 @@
-name: Run Automation Tests
+name: Run Automation Tests 1
 
 on:
   push:
@@ -30,8 +30,9 @@ jobs:
       id: get-path
       run: |
         latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-        echo "path=${GITHUB_WORKSPACE}/report/${latest_report}" >> $GITHUB_ENV
-        echo ${GITHUB_WORKSPACE}/report/${latest_report}
+        echo $REPORT_PATH
+      env: 
+        REPORT_PATH: ${GITHUB_WORKSPACE}/report/${latest_report}
       
   results: 
     name: Tests Result
@@ -39,18 +40,10 @@ jobs:
     needs: build
     steps:
       - name: Obtener Valor de Variable
-        run: |
-          path=$(cat $GITHUB_ENV | grep "path=" | sed -n -e 's/^path=//p')
-          echo "El valor de la variable es: $path"
+        run: echo $REPORT_PATH
         
-      - name: Crear Artefacto
-        run: |
-          echo "Creando artefacto"
-          cat "$path"  # Utilizamos el valor de la variable
-          echo "$path" > AutomationReport.html  # Creamos un archivo con el valor de la variable
-          
       - name: Publish HTML
         uses: actions/upload-artifact@v2
         with:
           name: Automation Report
-          path: AutomationReport.html
+          path: "$REPORT_PATH"
