@@ -25,6 +25,11 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
+
+    - name: Obtener Ruta Report
+      run: |
+        carpeta_especifica="${GITHUB_WORKSPACE}/report"
+        ls -la "$carpeta_especifica" 
       
   results: 
     name: Tests Result
