@@ -28,9 +28,16 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
 
+    - name: Publish HTML
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: Automation Report
+        path: /
+        
     - name: Obtener Ruta Report
       id: get-path
       run: |
+        ls -R
         latest_report=${GITHUB_WORKSPACE}/report
         echo $latest_report
         echo "REPORT_PATH=${latest_report}" >> $GITHUB_ENV
@@ -41,22 +48,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Obtener Valor de Variable
-        run: echo $REPORT_PATH
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: Automation Report
-    # A file, directory or wildcard pattern that describes what to upload
-          path: /home/runner/work/proyecto-base-1.1/proyecto-base-1.1/report
-    # The desired behavior if no files are found using the provided path.
-          retention-days: 6
-        
+    
       - name: Publish HTML
         uses: actions/download-artifact@v2.1.1
         with:
           name: Automation Report
-        # Destination path
-          path: /home/runner/work/proyecto-base-1.1/proyecto-base-1.1/report/AutomationReport_10-08-2023_22.14.01.html
+      - name: Test artifact
+        run: ls -R
   
