@@ -26,13 +26,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
 
-    - name: Variable Report
+    - name: Generate Report
       run: |
         latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
         cat ./report/$latest_report > AutomationReport.html
-        cat AutomationReport.html
          
-    - name: Publish HTML
+    - name: Publish Automation Report
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
@@ -44,6 +43,12 @@ jobs:
     needs: build
     steps:
     
-      - name: Listo
-        run: echo "Listo"
-  
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v2.0.0
+        with:
+          # Artifact name
+          name: Automation Report
+          # Path of the directory containing the static assets.
+          path: AutomationReport.html
+          # Duration after which artifact will expire in days.
+          retention-days: 1
