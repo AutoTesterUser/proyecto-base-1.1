@@ -28,21 +28,18 @@ jobs:
 
     - name: Obtener Ruta Report
       run: |
-        carpeta_especifica="${GITHUB_WORKSPACE}/report"
-        ls -la "$carpeta_especifica" 
+        directory="${GITHUB_WORKSPACE}/report"
+        latest_report=$(ls -t $directory | head -n 1)
+        echo "::set-output name=report::$directory/$latest_report"
       
   results: 
     name: Tests Result
     runs-on: ubuntu-latest
     needs: build
-    steps:
-      - name: Obtener Ruta Report
-        run: |
-          carpeta_especifica="${GITHUB_WORKSPACE}/report"
-          ls -la "$carpeta_especifica"          
-
+    steps:   
+    
       - name: Publish HTML
         uses: actions/upload-artifact@v2
         with:
           name: AutomationReport.html
-          path: './temp/'
+          path: '${{ needs.build.outputs.report }}"'
