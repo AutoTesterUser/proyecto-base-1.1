@@ -37,9 +37,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:   
-    
+
+      - name: Crear Artefacto
+        run: |
+          echo "Creando artefacto"
+          ls "$path"  # Utilizamos comillas dobles aquí
+          echo "$path" > AutomationReport.html  # Creamos un archivo con el valor de la variable
+          
       - name: Publish HTML
         uses: actions/upload-artifact@v2
         with:
-          name: AutomationReport.html
-          path: ${{ env.path }} 
+          name: Automation Report
+          path: AutomationReport.html
