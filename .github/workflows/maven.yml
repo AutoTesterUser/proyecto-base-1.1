@@ -28,8 +28,19 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
 
+    - name: Run a command
+      run: echo "Hello, world!"  # Reemplaza esto con tu propio comando
+      id: my_command
+
+    - name: Set result in env variable
+      run: echo "RESULT_VAR=${{ steps.my_command.outputs.stdout }}" >> $GITHUB_ENV
+
+    - name: View result
+      run: echo "The result is $RESULT_VAR"
+        
     - name: Obtener Ruta Report
       run: |
+         latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
          ls -R
          latest_report=${GITHUB_WORKSPACE}/report
          echo $latest_report
