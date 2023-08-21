@@ -28,9 +28,8 @@ jobs:
 
     - name: Obtener Ruta Report
       run: |
-        directory="${GITHUB_WORKSPACE}/report"
-        latest_report=$(ls -t $directory | head -n 1)
-        echo "::set-output name=report::$directory/$latest_report"
+        latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        echo ${latest_report}
       
   results: 
     name: Tests Result
@@ -42,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: AutomationReport.html
-          path: ${{ needs.build.outputs.report }}"
+          path: ${{ needs.build.outputs.latest_report }}"
