@@ -36,8 +36,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
-        run: ls -R
-        path: ./report/AutomationReport_10-08-2023_22.14.01.html
+        path: AutomationReport.html
         
   results: 
     name: Tests Result
