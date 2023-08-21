@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: AutomationReport.html
-          path: '${{ needs.build.outputs.report }}"'
+          path: ${{ needs.build.outputs.report }}"
