@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
-        path: /home/runner/work/proyecto-base-1.1/proyecto-base-1.1/report
+        path: ./report
         
    
       
