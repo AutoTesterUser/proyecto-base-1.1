@@ -27,15 +27,16 @@ jobs:
       run: mvn -B package --file pom.xml || true
 
     - name: Variable Report
-      run: echo latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-      env:
-          REPORT_PATH: $latest_report
+      run: |
+        echo latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        cat ${GITHUB_WORKSPACE}/report/$latest_report > AutomationReport.html
+        cat AutomationReport.html
          
     - name: Publish HTML
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
-        run: latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        run: ls -R
         path: ./report/AutomationReport_10-08-2023_22.14.01.html
         
   results: 
