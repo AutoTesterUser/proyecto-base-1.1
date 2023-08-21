@@ -31,8 +31,8 @@ jobs:
     - name: Obtener Ruta Report
       id: get-path
       run: |
-        latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-        echo "REPORT_PATH=${GITHUB_WORKSPACE}/report/${latest_report}" >> $GITHUB_ENV
+        latest_report=$(${GITHUB_WORKSPACE}/report)
+        echo "REPORT_PATH=${latest_report}" >> $GITHUB_ENV
         echo $REPORT_PATH
       
   results: 
