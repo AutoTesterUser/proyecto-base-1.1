@@ -14,8 +14,6 @@ jobs:
   build:
     name: Build Project
     runs-on: ubuntu-latest
-    env:
-      REPORT_PATH: ""  # Definimos la variable vacía inicialmente
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -27,13 +25,18 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
+
+    - name: Variable Report
+      run: echo latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+      env:
+          REPORT_PATH: $latest_report
          
     - name: Publish HTML
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
         run: latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
-        path: ./report/$latest_report
+        path: ./report/$REPORT_PATH
         
   results: 
     name: Tests Result
