@@ -40,15 +40,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Get Relative Path
-      id: get-relative-path
+    - name: Obtener Ruta Report
       run: |
         current_directory=$(pwd)
-        echo ls -t $current_directory/report/
-        echo ls -t $current_directory/report/ | head -n 1
-        latest_report=$(ls -t $current_directory/report/ | head -n 1)
+        latest_report=$(ls -t $current_directory/report | head -n 1)
         echo "$current_directory/report/$latest_report"
-        echo "{path}={($current_directory/report/$latest_report)}" >> $GITHUB_OUTPUT
+        tar -cvf $current_directory/AutomationReport.tar $current_directory/report/$latest_report
+        ls
+        cat $current_directory/AutomationReport.tar
+        mkdir -p temp
+        mv $current_directory/report/$latest_report temp/
+        echo "::set-output name=path::$(./temp/)"
       
     - name: Publish HTML
       uses: actions/upload-artifact@v2
