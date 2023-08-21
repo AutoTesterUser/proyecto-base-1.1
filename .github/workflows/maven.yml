@@ -48,5 +48,5 @@ jobs:
         with:
           name: Automation Report
         # Destination path
-          path: $REPORT_PATH/AutomationReport_10-08-2023_22.14.01.html
+          path: ./report/AutomationReport_10-08-2023_22.14.01.html
   
