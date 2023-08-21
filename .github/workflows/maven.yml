@@ -49,5 +49,5 @@ jobs:
         with:
           name: Automation Report
         # Destination path
-          path: ./report/AutomationReport_10-08-2023_22.14.01.html
+          path: /home/runner/work/proyecto-base-1.1/proyecto-base-1.1/report/AutomationReport_10-08-2023_22.14.01.html
   
