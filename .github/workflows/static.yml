@@ -33,7 +33,8 @@ jobs:
     steps:
       - name: Obtener Ruta Report
         run: |
-          pwd ls          
+          carpeta_especifica="${GITHUB_WORKSPACE}/report"
+          ls -la "$carpeta_especifica"          
 
       - name: Publish HTML
         uses: actions/upload-artifact@v2
