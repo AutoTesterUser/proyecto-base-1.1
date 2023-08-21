@@ -36,7 +36,7 @@ jobs:
       run: echo "RESULT_VAR=${{ steps.my_command.outputs.stdout }}" >> $GITHUB_ENV
 
     - name: View result
-      run: echo "The result is $RESULT_VAR"
+      run: echo "The result is ${{ env.RESULT_VAR }}"
         
     - name: Obtener Ruta Report
       run: |
@@ -51,6 +51,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Automation Report
+        run: echo "Descargando"
         path: ./report/AutomationReport_10-08-2023_22.14.01.html
         
    
