@@ -33,15 +33,7 @@ jobs:
     steps:
       - name: Obtener Ruta Report
         run: |
-          current_directory=$(pwd)
-          latest_report=$(ls -t $current_directory/report | head -n 1)
-          echo "$current_directory/report/$latest_report"
-          tar -cvf $current_directory/AutomationReport.tar $current_directory/report/$latest_report
-          ls
-          cat $current_directory/AutomationReport.tar
-          mkdir -p temp
-          mv $current_directory/report/$latest_report temp/
-          ls ./temp/
+          pwd ls          
 
       - name: Publish HTML
         uses: actions/upload-artifact@v2
