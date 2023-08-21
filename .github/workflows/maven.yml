@@ -44,7 +44,9 @@ jobs:
         run: echo $REPORT_PATH
         
       - name: Publish HTML
-        uses: actions/upload-artifact@v2
+        uses: actions/download-artifact@v2.1.1
         with:
           name: Automation Report
+        # Destination path
           path: $REPORT_PATH
+  
