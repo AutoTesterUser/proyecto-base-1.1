@@ -41,7 +41,7 @@ jobs:
       - name: Crear Artefacto
         run: |
           echo "Creando artefacto"
-          ls "$path"  # Utilizamos comillas dobles aquí
+          cat "$path"  # Utilizamos comillas dobles aquí
           echo "$path" > AutomationReport.html  # Creamos un archivo con el valor de la variable
           
       - name: Publish HTML
