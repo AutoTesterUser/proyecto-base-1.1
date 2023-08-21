@@ -1,23 +1,14 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Run Automation Tests
 
 on:
-  workflow_dispatch:
-    inputs:
-      parametro-1:
-        description: "Motivo ejecución"
-        required: true
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -34,26 +25,32 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml || true
+
+    - name: Obtener Ruta Report
+      id: get-path
+      run: |
+        latest_report=$(ls -t ${GITHUB_WORKSPACE}/report | head -n 1)
+        echo "path=${GITHUB_WORKSPACE}/report/${latest_report}" >> $GITHUB_ENV
+        echo ${GITHUB_WORKSPACE}/report/${latest_report}
       
-  results:
+  results: 
     name: Tests Result
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Obtener Ruta Report
-      run: |
-        current_directory=$(pwd)
-        latest_report=$(ls -t $current_directory/report | head -n 1)
-        echo "$current_directory/report/$latest_report"
-        tar -cvf $current_directory/AutomationReport.tar $current_directory/report/$latest_report
-        ls
-        cat $current_directory/AutomationReport.tar
-        mkdir -p temp
-        mv $current_directory/report/$latest_report temp/
-        echo "::set-output name=path::$(./temp/)"
-      
-    - name: Publish HTML
-      uses: actions/upload-artifact@v2
-      with:
-        name: AutomationReport.html
-        path: ${{ steps.get-relative-path.outputs.path }}
+      - name: Obtener Valor de Variable
+        run: |
+          path=$(cat $GITHUB_ENV | grep "path=" | sed -n -e 's/^path=//p')
+          echo "El valor de la variable es: $path"
+        
+      - name: Crear Artefacto
+        run: |
+          echo "Creando artefacto"
+          cat "$path"  # Utilizamos el valor de la variable
+          echo "$path" > AutomationReport.html  # Creamos un archivo con el valor de la variable
+          
+      - name: Publish HTML
+        uses: actions/upload-artifact@v2
+        with:
+          name: Automation Report
+          path: AutomationReport.html
